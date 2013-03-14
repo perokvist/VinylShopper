@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace VinylShopper.Services
+namespace VinylShopper.Services.Contracts
 {
     public interface ISearchProvider : IStoreInfo
     {
-        IEnumerable<ISearchResult> Search(string artist, string albumTitle, string label);
-    }
-    
-    public interface IStoreInfo
-    {
-        string StoreName { get; }
-        Uri StoreLogo { get; } 
+        Task<IEnumerable<ISearchResult>> SearchAsync(string artist, string albumTitle, string label);
     }
 }

@@ -1,4 +1,4 @@
-namespace VinylShopper.Services
+namespace VinylShopper.Services.Contracts
 {
     public interface ISearchResult
     {

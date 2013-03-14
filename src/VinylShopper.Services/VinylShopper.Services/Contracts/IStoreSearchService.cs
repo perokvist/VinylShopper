@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VinylShopper.Services
+namespace VinylShopper.Services.Contracts
 {
     public interface IStoreSearchService
     {

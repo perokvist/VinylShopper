@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using VinylShopper.Services.Contracts;
 
 namespace VinylShopper.Services
 {
@@ -15,7 +16,10 @@ namespace VinylShopper.Services
 
         public IEnumerable<Tuple<IStoreInfo, IEnumerable<ISearchResult>>> Search(string artist, string albumName, string label)
         {
-            return _providers.Select(p => new Tuple<IStoreInfo, IEnumerable<ISearchResult>>(p ,p.Search(artist, albumName, label)));
+             _providers.Select(async p => 
+                new Tuple<IStoreInfo, IEnumerable<ISearchResult>>(p , await p.SearchAsync(artist, albumName, label)));
+        
+               throw new NotImplementedException(); 
         }  
     }
 }

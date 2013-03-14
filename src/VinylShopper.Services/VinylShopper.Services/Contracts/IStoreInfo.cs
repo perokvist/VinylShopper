@@ -1,6 +1,6 @@
 using System;
 
-namespace VinylShopper.Services
+namespace VinylShopper.Services.Contracts
 {
     public interface IStoreInfo
     {
