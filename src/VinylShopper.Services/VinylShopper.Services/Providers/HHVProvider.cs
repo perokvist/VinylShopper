@@ -45,17 +45,11 @@ namespace VinylShopper.Services.Providers
 
         private IEnumerable<HtmlNode> GetNodesByClass(HtmlNode node, string className)
         {
-            var result = node.ChildNodes.SelectMany(SelectChildren)
+            return node.Descendants()
                 .Where(n => n.Attributes.Any(a => a.Name == "class" && a.Value == className));
-            return result;
         }
 
-        private IEnumerable<HtmlNode> SelectChildren(HtmlNode node)
-        {
-            return node.ChildNodes
-                .SelectMany(SelectChildren);
-        }
-
+        
         public Task<IEnumerable<IStoreSearchResult>> SearchTitleAsync(string title)
         {
             throw new NotImplementedException();
