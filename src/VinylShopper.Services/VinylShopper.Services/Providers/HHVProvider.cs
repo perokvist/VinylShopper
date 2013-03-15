@@ -31,24 +31,9 @@ namespace VinylShopper.Services.Providers
 
         public async Task<IEnumerable<IStoreSearchResult>> SearchArtistAsync(string artist)
         {
-            var uri = new Uri("http://www.hhv.de/shop/en/catalog/music/c:366/sort:R?term=" + artist);
-            var result = await _webFetcher.GetStringAsync(uri);
-
-            var h = new HtmlAgilityPack.HtmlDocument();
-            h.LoadHtml(result);
-            var node = h.GetElementbyId("content");
-            var nodes = GetNodesByClass(node, "info_area");
-                
-            throw new NotImplementedException();
-        
+            var uri = new Uri("http://www.hhv.de/shop/en/catalog/music/c:366/f:70,66,67,68,69/sort:R?term=" + artist);
+            return await Search(uri);
         }
-
-        private IEnumerable<HtmlNode> GetNodesByClass(HtmlNode node, string className)
-        {
-            return node.Descendants()
-                .Where(n => n.Attributes.Any(a => a.Name == "class" && a.Value == className));
-        }
-
         
         public Task<IEnumerable<IStoreSearchResult>> SearchTitleAsync(string title)
         {
@@ -59,5 +44,24 @@ namespace VinylShopper.Services.Providers
         {
             throw new NotImplementedException();
         }
+
+        private async Task<List<StoreSearchResult>> Search(Uri uri)
+        {
+            var result = await _webFetcher.GetStringAsync(uri);
+            var html = new HtmlDocument();
+            html.LoadHtml(result);
+            var node = html.GetElementbyId("content");
+            var nodes = node.ByClass("info_area");
+
+            return nodes.Select(n => new StoreSearchResult
+            {
+                AlbumTitle = n.FirstTextByClass("subtitle"),
+                Artist = n.FirstTextByClass("title"),
+                Label = n.FirstTextByClass("label").Replace(",&nbsp;", string.Empty),
+                Price = n.FirstTextByClass("price").Replace("&", string.Empty).Replace(";", string.Empty),
+                Format = n.FirstTextByClass("category"),
+                Pressing = n.FirstTextByClass("pressing")
+            }).ToList();
+        } 
     }
 }

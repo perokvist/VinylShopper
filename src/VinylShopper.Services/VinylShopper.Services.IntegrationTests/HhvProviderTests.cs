@@ -14,7 +14,17 @@ namespace VinylShopper.Services.IntegrationTests
         public void SearchShouldParseResult()
         {
             var s = new HhvProvider(new WebFetcher());
-            s.SearchArtistAsync("jessie").Wait();
+            var r = s.SearchArtistAsync("jessie").Result.Take(25);
+
+            var i = 0;
+            foreach (var storeSearchResult in r)
+            {
+                Console.WriteLine(i + " " + storeSearchResult.Artist);
+                Console.WriteLine(i + " " + storeSearchResult.AlbumTitle);
+                Console.WriteLine(i + " " + storeSearchResult.Label);
+                Console.WriteLine(i + " " + storeSearchResult.Price);
+                i++;
+            }
         }
     }
 }

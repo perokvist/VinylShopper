@@ -9,6 +9,8 @@ namespace VinylShopper.Services.Contracts
         string Label { get; }
         string ReleaseDate { get; }
         string Price { get; }
+        string Format { get; }
+        string Pressing { get; }
         Uri AlbumCover { get; }
         Uri Url { get; }
     }
