@@ -5,6 +5,8 @@ namespace VinylShopper.Services.Contracts
 {
     public interface ISearchProvider : IStoreInfo
     {
-        Task<IEnumerable<ISearchResult>> SearchAsync(string artist, string albumTitle, string label);
+        Task<IEnumerable<IStoreSearchResult>> SearchArtistAsync(string artist);
+        Task<IEnumerable<IStoreSearchResult>> SearchTitleAsync(string title);
+        Task<IEnumerable<IStoreSearchResult>> SearchLabelAsync(string label);
     }
 }

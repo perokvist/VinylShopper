@@ -10,11 +10,11 @@ namespace VinylShopper.Services.IntegrationTests
 {
     public class HhvProviderTests
     {
-        [Test, Ignore("draft")]
+        [Test]
         public void SearchShouldParseResult()
         {
             var s = new HhvProvider(new WebFetcher());
-            s.SearchAsync("jessie", string.Empty, string.Empty).Wait();
+            s.SearchArtistAsync("jessie").Wait();
         }
     }
 }

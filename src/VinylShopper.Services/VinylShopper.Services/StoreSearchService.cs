@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using VinylShopper.Services.Contracts;
 
 namespace VinylShopper.Services
@@ -14,12 +15,28 @@ namespace VinylShopper.Services
             _providers = providers;
         }
 
-        public IEnumerable<Tuple<IStoreInfo, IEnumerable<ISearchResult>>> Search(string artist, string albumName, string label)
+        public async Task<IEnumerable<ISearchResult>> SearchArtistAsync(string artist)
         {
-             _providers.Select(async p => 
-                new Tuple<IStoreInfo, IEnumerable<ISearchResult>>(p , await p.SearchAsync(artist, albumName, label)));
+            return await Search(p => p.SearchArtistAsync(artist));
+        }
         
-               throw new NotImplementedException(); 
+        public async Task<IEnumerable<ISearchResult>> SearchAlbumAsync(string album)
+        {
+            return await Search(p => p.SearchTitleAsync(album));
+        }
+
+        public async Task<IEnumerable<ISearchResult>> SearchLabelAsync(string label)
+        {
+            return await Search(p => p.SearchLabelAsync(label));
+        }
+
+        private Task<SearchResult[]> Search(Func<ISearchProvider, Task<IEnumerable<IStoreSearchResult>>> providerAction)
+        {
+            var tasks = _providers.Select(async p =>
+                new SearchResult() { Store = p, Result = await providerAction(p) }
+                );
+            return Task.WhenAll(tasks);
         }  
+
     }
 }
