@@ -17,17 +17,17 @@ namespace VinylShopper.Services
 
         public async Task<IEnumerable<ISearchResult>> SearchArtistAsync(string artist)
         {
-            return await Search(p => p.SearchArtistAsync(artist));
+            return await Search(p => p.SearchArtistAsync(artist)).ConfigureAwait(false);
         }
         
         public async Task<IEnumerable<ISearchResult>> SearchAlbumAsync(string album)
         {
-            return await Search(p => p.SearchTitleAsync(album));
+            return await Search(p => p.SearchTitleAsync(album)).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<ISearchResult>> SearchLabelAsync(string label)
         {
-            return await Search(p => p.SearchLabelAsync(label));
+            return await Search(p => p.SearchLabelAsync(label)).ConfigureAwait(false);
         }
 
         private Task<SearchResult[]> Search(Func<ISearchProvider, Task<IEnumerable<IStoreSearchResult>>> providerAction)
