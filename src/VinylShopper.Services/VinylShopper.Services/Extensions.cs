@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace VinylShopper.Services
@@ -29,5 +31,32 @@ namespace VinylShopper.Services
             }
 
         }
+
+        public static void ForEach<T>(this IEnumerable<T> self, Action<T> action)
+        {
+            foreach (var item in self)
+            {
+                action(item);
+            }
+        }
+
+        public static Uri ToUri(this string url)
+        {
+            return !string.IsNullOrWhiteSpace(url) ? new Uri(url) : null;
+        }
+
+        public static T Tap<T>(this T self, Action<T> action)
+        {
+            action(self);
+            return self;
+        }
+
+        public static string Empty(this string self, params string[] values)
+        {
+            values.ForEach(c => self.Replace(c, String.Empty));
+            return self;
+        }
+
+
     }
 }

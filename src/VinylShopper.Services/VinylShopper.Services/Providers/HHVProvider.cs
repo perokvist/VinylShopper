@@ -13,6 +13,10 @@ namespace VinylShopper.Services.Providers
     public class HhvProvider : ISearchProvider
     {
         private readonly IWebFetcher _webFetcher;
+        private const string Artist = "http://www.hhv.de/shop/en/catalog/all/attribute:artist/f:70,66,67/sort:R?term=";
+        private const string Title = "http://www.hhv.de/shop/en/catalog/all/attribute:album/f:70,66,67/sort:R?term=";
+        private const string Label = "http://www.hhv.de/shop/en/catalog/all/attribute:lable/f:70,66,67/sort:R?term=";
+
 
         public HhvProvider(IWebFetcher webFetcher)
         {
@@ -26,23 +30,22 @@ namespace VinylShopper.Services.Providers
 
         public System.Uri StoreLogo
         {
-            get { throw new System.NotImplementedException(); }
+            get { return new Uri("http://www.hhv.de/assets/logos/hhv-b96bab0e4a7306d9e70ce4426870e3ca.png"); }
         }
 
         public async Task<IEnumerable<IStoreSearchResult>> SearchArtistAsync(string artist)
         {
-            var uri = new Uri("http://www.hhv.de/shop/en/catalog/music/c:366/f:70,66,67,68,69/sort:R?term=" + artist);
-            return await Search(uri);
+            return await Search(new Uri(Artist + artist));
         }
         
-        public Task<IEnumerable<IStoreSearchResult>> SearchTitleAsync(string title)
+        public async Task<IEnumerable<IStoreSearchResult>> SearchTitleAsync(string title)
         {
-            throw new NotImplementedException();
+            return await Search(new Uri(Title + title));
         }
 
-        public Task<IEnumerable<IStoreSearchResult>> SearchLabelAsync(string label)
+        public async Task<IEnumerable<IStoreSearchResult>> SearchLabelAsync(string label)
         {
-            throw new NotImplementedException();
+            return await Search(new Uri(Label + label));
         }
 
         private async Task<List<StoreSearchResult>> Search(Uri uri)
@@ -50,18 +53,23 @@ namespace VinylShopper.Services.Providers
             var result = await _webFetcher.GetStringAsync(uri);
             var html = new HtmlDocument();
             html.LoadHtml(result);
-            var node = html.GetElementbyId("content");
-            var nodes = node.ByClass("info_area");
-
-            return nodes.Select(n => new StoreSearchResult
+            var contentNode = html.GetElementbyId("content");
+            var nodes = contentNode.ByClass("info_area");
+            
+            return nodes.AsParallel()
+                .AsOrdered()
+                .Select(n => new StoreSearchResult
             {
-                AlbumTitle = n.FirstTextByClass("subtitle"),
+                Title = n.FirstTextByClass("subtitle"),
                 Artist = n.FirstTextByClass("title"),
-                Label = n.FirstTextByClass("label").Replace(",&nbsp;", string.Empty),
-                Price = n.FirstTextByClass("price").Replace("&", string.Empty).Replace(";", string.Empty),
+                Label = n.FirstTextByClass("label").Empty(",&nbsp;"),
+                Price = n.FirstTextByClass("price").Empty("&", ";"),
                 Format = n.FirstTextByClass("category"),
-                Pressing = n.FirstTextByClass("pressing")
-            }).ToList();
+                Pressing = n.FirstTextByClass("pressing"),
+                Url = n.ParentNode.FirstAttributeByClass("overlay", "href").ToUri()
+            }
+            .Tap(r => r.Cover = n.ParentNode.ByAlt(r.Title).FirstOrDefault().AttributeValue("data-original").ToUri()))
+            .ToList();
         } 
     }
 }

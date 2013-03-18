@@ -20,9 +20,12 @@ namespace VinylShopper.Services.IntegrationTests
             foreach (var storeSearchResult in r)
             {
                 Console.WriteLine(i + " " + storeSearchResult.Artist);
-                Console.WriteLine(i + " " + storeSearchResult.AlbumTitle);
+                Console.WriteLine(i + " " + storeSearchResult.Title);
                 Console.WriteLine(i + " " + storeSearchResult.Label);
                 Console.WriteLine(i + " " + storeSearchResult.Price);
+                Console.WriteLine(i + " " + storeSearchResult.Cover);
+                Console.WriteLine(i + " " + storeSearchResult.Url);
+                Console.WriteLine("------ ");
                 i++;
             }
         }

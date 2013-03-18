@@ -7,7 +7,7 @@ namespace VinylShopper.Services.Providers
     {
         public string Artist { get; set; }
 
-        public string AlbumTitle { get; set; }
+        public string Title { get; set; }
 
         public string Label { get; set; }
 
@@ -15,7 +15,7 @@ namespace VinylShopper.Services.Providers
 
         public string Price { get; set; }
 
-        public Uri AlbumCover { get; set; }
+        public Uri Cover { get; set; }
 
         public Uri Url { get; set; }
 
