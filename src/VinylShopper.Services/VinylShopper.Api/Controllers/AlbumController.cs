@@ -5,12 +5,14 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Treefort.WebApi.Security;
 using VinylShopper.Services;
 using VinylShopper.Services.Contracts;
 using VinylShopper.Services.Providers;
 
 namespace VinylShopper.Api.Controllers
 {
+    [RequireHttps]
     [Authorize(Roles = "Shopper")]
     public class AlbumController : ApiController
     {

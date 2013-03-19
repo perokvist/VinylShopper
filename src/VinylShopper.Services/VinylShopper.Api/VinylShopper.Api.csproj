@@ -146,8 +146,9 @@
     <Reference Include="Treefort">
       <HintPath>..\packages\Treefort.0.1.2\lib\net45\Treefort.dll</HintPath>
     </Reference>
-    <Reference Include="Treefort.WebApi">
-      <HintPath>..\packages\Treefort.WebApi.0.0.1\lib\net45\Treefort.WebApi.dll</HintPath>
+    <Reference Include="Treefort.WebApi, Version=0.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Treefort.WebApi.0.0.2\lib\net45\Treefort.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
