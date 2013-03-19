@@ -11,6 +11,7 @@ using VinylShopper.Services.Providers;
 
 namespace VinylShopper.Api.Controllers
 {
+    [Authorize(Roles = "Shopper")]
     public class AlbumController : ApiController
     {
         private readonly IStoreSearchService _searchService;
@@ -20,9 +21,9 @@ namespace VinylShopper.Api.Controllers
             _searchService = searchService;
         }
 
-        public async Task<IEnumerable<ISearchResult>> Get(string album)
+        public async Task<IEnumerable<ISearchResult>> Get(string term)
         {
-            return await _searchService.SearchAlbumAsync(album);
+            return await _searchService.SearchAlbumAsync(term);
         }
     }
 }
