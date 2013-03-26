@@ -1,0 +1,85 @@
+0 Jessie Ware
+0 Devotion
+0 , Island
+0 21,95 €
+0 http://images.hhv.de/catalog/shop_entry_popup/00309/309738_1.jpg
+0 http://www.hhv.de/shop/en/item/jessie-ware-devotion-309738
+------ 
+1 Jessie Ware
+1 Devotion
+1 
+1 21,95 €
+1 http://images.hhv.de/catalog/shop_entry_popup/00309/309738_1.jpg
+1 http://www.hhv.de/shop/en/item/jessie-ware-devotion-309738
+------ 
+2 Young Jessie
+2 Shuffle In The Gravel / Make Believe
+2 , Acto
+2 8,95 €
+2 http://images4.hhv.de/catalog/shop_entry_popup/00297/297536.jpg
+2 http://www.hhv.de/shop/en/item/young-jessie-shuffle-in-the-gravel-make-believe-297536
+------ 
+3 Young Jessie
+3 Shuffle In The Gravel / Make Believe
+3 
+3 8,95 €
+3 http://images4.hhv.de/catalog/shop_entry_popup/00297/297536.jpg
+3 http://www.hhv.de/shop/en/item/young-jessie-shuffle-in-the-gravel-make-believe-297536
+------ 
+4 Jessie Ware
+4 Devotion
+4 , Island
+4 21,95 €
+4 http://images.hhv.de/catalog/shop_entry_popup/00286/286740.jpg
+4 http://www.hhv.de/shop/en/item/jessie-ware-devotion-286740
+------ 
+5 Jessie Ware
+5 Devotion
+5 
+5 21,95 €
+5 http://images.hhv.de/catalog/shop_entry_popup/00286/286740.jpg
+5 http://www.hhv.de/shop/en/item/jessie-ware-devotion-286740
+------ 
+6 Jessie Ware
+6 Strangest Feeling
+6 , PMR
+6 12,95 €
+6 http://images.hhv.de/catalog/shop_entry_popup/00272/272611.jpg
+6 http://www.hhv.de/shop/en/item/jessie-ware-strangest-feeling-272611
+------ 
+7 Jessie Ware
+7 Strangest Feeling
+7 
+7 12,95 €
+7 http://images.hhv.de/catalog/shop_entry_popup/00272/272611.jpg
+7 http://www.hhv.de/shop/en/item/jessie-ware-strangest-feeling-272611
+------ 
+8 Young Jessie
+8 Big Chief (King Of Love)
+8 , Mercury
+8 9,95 €
+8 http://images.hhv.de/catalog/shop_entry_popup/00272/272097.jpg
+8 http://www.hhv.de/shop/en/item/young-jessie-big-chief-king-of-love-272097
+------ 
+9 Young Jessie
+9 Big Chief (King Of Love)
+9 
+9 9,95 €
+9 http://images.hhv.de/catalog/shop_entry_popup/00272/272097.jpg
+9 http://www.hhv.de/shop/en/item/young-jessie-big-chief-king-of-love-272097
+------ 
+10 Young Jessie
+10 Mary Lou / Don’t Think I Will
+10 , Modern
+10 10,95 €
+10 http://images4.hhv.de/catalog/shop_entry_popup/00238/238193.jpg
+10 http://www.hhv.de/shop/en/item/young-jessie-mary-lou-don-t-think-i-will-238193
+------ 
+11 Young Jessie
+11 Mary Lou / Don’t Think I Will
+11 
+11 10,95 €
+11 http://images4.hhv.de/catalog/shop_entry_popup/00238/238193.jpg
+11 http://www.hhv.de/shop/en/item/young-jessie-mary-lou-don-t-think-i-will-238193
+------ 
+
