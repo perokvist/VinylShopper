@@ -45,7 +45,7 @@
     <Compile Include="Contracts\IStoreSearchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\StoreSearchResult.cs" />
-    <Compile Include="Providers\NodeExtensions.cs" />
+    <Compile Include="NodeExtensions.cs" />
     <Compile Include="Providers\RecordManiaProvider.cs" />
     <Compile Include="SearchResult.cs" />
     <Compile Include="StoreSearchService.cs" />

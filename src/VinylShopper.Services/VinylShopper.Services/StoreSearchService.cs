@@ -29,14 +29,13 @@ namespace VinylShopper.Services
         {
             return await Search(p => p.SearchLabelAsync(label)).ConfigureAwait(false);
         }
-
+        
         private Task<SearchResult[]> Search(Func<ISearchProvider, Task<IEnumerable<IStoreSearchResult>>> providerAction)
         {
             var tasks = _providers.Select(async p =>
                 new SearchResult() { Store = p, Result = await providerAction(p) }
                 );
             return Task.WhenAll(tasks);
-        }  
-
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace VinylShopper.Api
             AreaRegistration.RegisterAllAreas();
 
             var configuration = GlobalConfiguration.Configuration;
+            configuration.Filters.Add(new Treefort.WebApi.Security.RequireHttpsAttribute());
             var formatters = configuration.Formatters;
             formatters.Remove(formatters.XmlFormatter);
 

@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
 
-namespace VinylShopper.Services.Providers
+namespace VinylShopper.Services
 {
     static class NodeExtensions
     {
@@ -19,6 +18,14 @@ namespace VinylShopper.Services.Providers
                     .Any(a => a.Name == "class" && a.Value.Split(' ').Contains(className)));
         }
 
+        public static IEnumerable<HtmlNode> ById(this HtmlNode node, string id)
+        {
+            return node.Descendants()
+                .Where(n => n.Attributes
+                    .Any(a => a.Name == "id" && a.Value == id));
+        }
+
+
         public static IEnumerable<HtmlNode> ByAlt(this HtmlNode node, string alt)
         {
             return node.Descendants()
@@ -26,6 +33,11 @@ namespace VinylShopper.Services.Providers
                     .Any(a => a.Name == "alt" && a.Value.Contains(alt)));
         }
 
+        public static string FirstTextById(this HtmlNode node, string id)
+        {
+            var innerNode = node.ById(id).FirstOrDefault();
+            return innerNode == null ? string.Empty : innerNode.InnerText.Trim();
+        }
 
         public static string FirstTextByClass(this HtmlNode node, string className)
         {
