@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace VinylShopper.Services
@@ -57,6 +58,9 @@ namespace VinylShopper.Services
             return self;
         }
 
-
+        public static string Decode(this string text)
+        {
+            return WebUtility.HtmlDecode(text);
+        }
     }
 }

@@ -60,12 +60,12 @@ namespace VinylShopper.Services.Providers
                 .AsOrdered()
                 .Select(n => new StoreSearchResult
             {
-                Title = n.FirstTextByClass("subtitle"),
-                Artist = n.FirstTextByClass("title"),
-                Label = n.FirstTextByClass("label").Empty(",&nbsp;"),
-                Price = n.FirstTextByClass("price").Empty("&", ";"),
-                Format = n.FirstTextByClass("category"),
-                Pressing = n.FirstTextByClass("pressing"),
+                Title = n.FirstTextByClass("subtitle").Decode(),
+                Artist = n.FirstTextByClass("title").Decode(),
+                Label = n.FirstTextByClass("label").Empty(",&nbsp;").Decode(),
+                Price = n.FirstTextByClass("price").Empty("&", ";").Decode(),
+                Format = n.FirstTextByClass("category").Decode(),
+                Pressing = n.FirstTextByClass("pressing").Decode(),
                 Url = n.ParentNode.FirstAttributeByClass("overlay", "href").ToUri()
             }
             .Tap(r => r.Cover = n.ParentNode.ByAlt(r.Title).FirstOrDefault().AttributeValue("data-original").ToUri()))
