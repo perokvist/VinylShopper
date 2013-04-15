@@ -1,0 +1,3 @@
+User-Agent: Fiddler
+Host: vinylshopper.azurewebsites.net
+Authorization: Basic YXBpc2hvcHBlcjp0cnloYXJkZXI=

@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VinylShopper.Wp", "VinylShopper.Wp\VinylShopper.Wp.csproj", "{159B6A31-8C67-40BA-8F3C-ABA8EC6D2FA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VinylShopper.Domain", "VinylShopper.Domain\VinylShopper.Domain.csproj", "{E594AC51-687F-4815-B5F7-F0F914B6DC3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{88716AF4-63EE-4370-B972-9B1F77F2D661}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{159B6A31-8C67-40BA-8F3C-ABA8EC6D2FA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159B6A31-8C67-40BA-8F3C-ABA8EC6D2FA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159B6A31-8C67-40BA-8F3C-ABA8EC6D2FA2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{159B6A31-8C67-40BA-8F3C-ABA8EC6D2FA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159B6A31-8C67-40BA-8F3C-ABA8EC6D2FA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{159B6A31-8C67-40BA-8F3C-ABA8EC6D2FA2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E594AC51-687F-4815-B5F7-F0F914B6DC3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E594AC51-687F-4815-B5F7-F0F914B6DC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E594AC51-687F-4815-B5F7-F0F914B6DC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E594AC51-687F-4815-B5F7-F0F914B6DC3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

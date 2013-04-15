@@ -1,9 +1,16 @@
+.Artist);
+.Title);
+.Label);
+.Price);
+.Cover);
+.Url);
 0 Jessie Ware
 0 Devotion
 0 , Island
 0 21,95 €
 0 http://images.hhv.de/catalog/shop_entry_popup/00309/309738_1.jpg
 0 http://www.hhv.de/shop/en/item/jessie-ware-devotion-309738
+
 ------ 
 1 Jessie Ware
 1 Devotion
