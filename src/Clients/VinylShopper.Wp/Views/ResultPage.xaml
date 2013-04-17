@@ -1,0 +1,54 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="VinylShopper.Wp.Views.ResultPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:VinylShopper.Domain.ViewModels;assembly=VinylShopper.Domain"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    d:DataContext="{d:DesignInstance d:Type=viewModels:ResultVmDesign, IsDesignTimeCreatable=true}"
+    >
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="PivotItemTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Title}"/>
+                <ListBox 
+                    ItemsSource="{Binding ResultList}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate >
+                            <Grid>
+
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Artist}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Price}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                            </Grid>
+                        </DataTemplate>
+
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <controls:Pivot 
+            Title="MY APPLICATION" 
+            ItemsSource="{Binding SearchResults}" ItemTemplate="{StaticResource PivotItemTemplate}">
+        </controls:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>

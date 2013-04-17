@@ -2,12 +2,15 @@
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using VinylShopper.Domain.Search;
 using VinylShopper.Domain.ViewModels;
 
 namespace VinylShopper.Wp
 {
     public partial class App : Application
     {
+        public static Searcher Searcher = new Searcher();
+
         private static MainVm viewModel = null;
 
         /// <summary>

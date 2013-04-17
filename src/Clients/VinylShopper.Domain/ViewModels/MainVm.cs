@@ -9,13 +9,6 @@ namespace VinylShopper.Domain.ViewModels
     {
         public async Task Search(string text)
         {
-            var web = new Web<RootObject>();
-            web.ConfigureAuthHeader(Constants.AuthHeader);
-            string uriString = string.Format(Constants.ApiUri, text);
-            var uri = new Uri(uriString);
-            var rootObject = await web.GetFeedAsync(uri);
-
-            ResultList = rootObject.Result.ToArray();
         }
 
         public IEnumerable<Result> ResultList { get; set; }
