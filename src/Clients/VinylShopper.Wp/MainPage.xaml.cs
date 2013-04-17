@@ -56,7 +56,7 @@ namespace VinylShopper.Wp
         private void LaunchSearch()
         {
             //App.ViewModel.Search(_searchTextBox.Text);
-            _vm.Search();
+            _vm.Search(_searchTextBox.Text);
         }
     }
 }

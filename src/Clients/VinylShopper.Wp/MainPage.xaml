@@ -5,7 +5,8 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:VinylShopper.Domain.ViewModels;assembly=VinylShopper.Domain"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -13,7 +14,19 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.BackgroundColor="Transparent"
     shell:SystemTray.Opacity="0"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    d:DataContext="{d:DesignInstance Type=viewModels:MainVmDesign, IsDesignTimeCreatable=true}">
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="ResultItemTemplate">
+            <Grid>
+                
+                <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Artist}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Price}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            </Grid>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
 
     <Grid x:Name="LayoutRoot" Margin="0,30,0,0">
         <Grid.RowDefinitions>
@@ -50,7 +63,9 @@
         </StackPanel>
 
         <!--ContentPanel contains ListBox and ListBox ItemTemplate. Place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"/>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ListBox ItemsSource="{Binding ResultList}" ItemTemplate="{StaticResource ResultItemTemplate}"/>
+        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>
