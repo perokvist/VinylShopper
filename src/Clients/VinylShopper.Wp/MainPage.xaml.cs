@@ -10,42 +10,53 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using VinylShopper.Domain.ViewModels;
 
 namespace VinylShopper.Wp
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        // Constructor
+        private readonly MainVm _vm;
+
         public MainPage()
         {
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
-            this.Loaded += new RoutedEventHandler(MainPage_Loaded);
-        }
+            //DataContext = App.ViewModel;
+            Loaded += MainPage_Loaded;
 
-        // Handle selection changed on ListBox
-        private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // If selected index is -1 (no selection) do nothing
-            if (MainListBox.SelectedIndex == -1)
-                return;
-
-            // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + MainListBox.SelectedIndex, UriKind.Relative));
-
-            // Reset selected index to -1 (no selection)
-            MainListBox.SelectedIndex = -1;
+            _vm = new MainVm();
+            DataContext = _vm;
         }
 
         // Load data for the ViewModel Items
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
+            _searchTextBox.Focus();
             //if (!App.ViewModel.IsDataLoaded)
             //{
             //    App.ViewModel.LoadData();
             //}
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LaunchSearch();
+            }
+        }
+
+        private void Button_Tap_1(object sender, GestureEventArgs e)
+        {
+            LaunchSearch();
+        }
+
+        private void LaunchSearch()
+        {
+            //App.ViewModel.Search(_searchTextBox.Text);
+            _vm.Search();
         }
     }
 }

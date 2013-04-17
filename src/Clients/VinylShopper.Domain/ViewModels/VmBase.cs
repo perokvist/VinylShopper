@@ -1,6 +1,10 @@
-﻿namespace VinylShopper.Domain.ViewModels
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using VinylShopper.Domain.Annotations;
+
+namespace VinylShopper.Domain.ViewModels
 {
-    public class VmBase
+    public class VmBase : INotifyPropertyChanged
     {
         public bool IsBusy { get; set; }
         public string BusyText { get; set; }
@@ -15,6 +19,15 @@
         {
             IsBusy = false;
             BusyText = null;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
