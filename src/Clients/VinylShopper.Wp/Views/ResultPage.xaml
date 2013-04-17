@@ -19,21 +19,28 @@
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="PivotItemTemplate">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="{Binding Title}"/>
                 <ListBox 
-                    ItemsSource="{Binding ResultList}">
+                    ItemsSource="{Binding ResultList}"
+                    Grid.Row="1">
                     <ListBox.ItemTemplate>
                         <DataTemplate >
-                            <Grid>
+                            <Grid d:DesignWidth="401.522" d:DesignHeight="87.723">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Artist}" Style="{StaticResource PhoneTextNormalStyle}"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Price}" Style="{StaticResource PhoneTextNormalStyle}"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                <Image Source="{Binding Cover}" Grid.RowSpan="3" Width="100" Height="100"/>
+                                <TextBlock x:Name="Title" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                <TextBlock x:Name="Artist" Text="{Binding Artist}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="1" Grid.Column="1"/>
+                                <TextBlock x:Name="Price" Text="{Binding Price}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"/>
+                                <TextBlock x:Name="Label" Text="{Binding Label}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="2" Grid.Column="1"/>
                             </Grid>
                         </DataTemplate>
 
@@ -41,13 +48,17 @@
                 </ListBox>
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="HeaderTemplate">
+            <TextBlock Text="{Binding Title}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+        </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot 
             Title="MY APPLICATION" 
-            ItemsSource="{Binding SearchResults}" ItemTemplate="{StaticResource PivotItemTemplate}">
+            ItemsSource="{Binding SearchResults}" ItemTemplate="{StaticResource PivotItemTemplate}" HeaderTemplate="{StaticResource HeaderTemplate}"
+            >
         </controls:Pivot>
     </Grid>
 

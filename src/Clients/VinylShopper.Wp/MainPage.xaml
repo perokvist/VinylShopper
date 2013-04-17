@@ -50,11 +50,11 @@
                          Margin="0,0,-12,0" VerticalAlignment="Center" 
                          Text="{Binding SearchTerm, Mode=TwoWay}"/>
 
-                <Button Grid.Column="1" BorderBrush="{x:Null}" Tap="Button_Tap_1">
-                    <Border HorizontalAlignment="Right" Height="50" Width="37" Background="{StaticResource PhoneAccentBrush}">
-                        <!--<Border.OpacityMask>
-                            <ImageBrush Stretch="None" ImageSource="/Assets/logo-tight-50-37.png"/>
-                        </Border.OpacityMask>-->
+                <Button Grid.Column="1" BorderBrush="{x:Null}" Tap="Button_Tap_1" UseLayoutRounding="False" Padding="0">
+                    <Border Background="{StaticResource PhoneForegroundBrush}" Width="100" Height="100">
+                        <Border.OpacityMask>
+                            <ImageBrush Stretch="Fill" ImageSource="/Assets/feature.search.png"/>
+                        </Border.OpacityMask>
                     </Border>
                 </Button>
 
