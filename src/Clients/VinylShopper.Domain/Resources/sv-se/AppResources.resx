@@ -120,4 +120,10 @@
   <data name="AppName" xml:space="preserve">
     <value>Record Shopper</value>
   </data>
+  <data name="SearchButtonText" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="SearchInstruction" xml:space="preserve">
+    <value>Söker efter artist, album och skivbolag.</value>
+  </data>
 </root>

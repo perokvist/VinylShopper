@@ -68,5 +68,23 @@ namespace VinylShopper.Domain.Resources.sv_se {
                 return ResourceManager.GetString("AppName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sök.
+        /// </summary>
+        public static string SearchButtonText {
+            get {
+                return ResourceManager.GetString("SearchButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Söker efter artist, album och skivbolag..
+        /// </summary>
+        public static string SearchInstruction {
+            get {
+                return ResourceManager.GetString("SearchInstruction", resourceCulture);
+            }
+        }
     }
 }
