@@ -1,4 +1,5 @@
-﻿using VinylShopper.Domain.ViewModels;
+﻿using System.Diagnostics;
+using VinylShopper.Domain.ViewModels;
 using VinylShopper.Win.Data;
 
 using System;
@@ -50,13 +51,14 @@ namespace VinylShopper.Win
             await _vm.Search(searchText);
 
             var realDataGroups = CreateDataGroups();
+            RealDataSource.SetGroups(realDataGroups);
 
             this.DefaultViewModel["Groups"] = realDataGroups;
         }
 
         private IEnumerable<SampleDataGroup> CreateDataGroups()
         {
-            return _vm.SearchResults.Select(CreateGroup);
+            return _vm.SearchResults.Select(CreateGroup).ToList();
         }
 
         private SampleDataGroup CreateGroup(ResultItemVm result)
@@ -65,10 +67,23 @@ namespace VinylShopper.Win
                                             result.Title, null, null, null);
             
             result.ResultList
-                .Select(x => new SampleDataItem(x.Url, x.Title, x.Label, x.Cover, x.ReleaseDate == null ? string.Empty : x.ReleaseDate.ToString(), x.Artist,group))
+                .Select(x => CreateItem(x, group))
                 .ForEach(d => group.Items.Add(d));
 
             return group;
+        }
+
+        private static SampleDataItem CreateItem(Result x, SampleDataGroup group)
+        {
+            var uniqueId = Guid.NewGuid().ToString();
+            Debug.WriteLine(string.Format("generating item with id: {0}", uniqueId));
+            return new SampleDataItem(uniqueId, 
+                x.Title, 
+                x.Label, 
+                x.Cover, 
+                x.ReleaseDate == null ? string.Empty : x.ReleaseDate.ToString(), 
+                x.Artist,
+                group);
         }
 
         /// <summary>

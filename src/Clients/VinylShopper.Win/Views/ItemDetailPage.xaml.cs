@@ -1,4 +1,5 @@
-﻿using VinylShopper.Win.Data;
+﻿using VinylShopper.Win.Common;
+using VinylShopper.Win.Data;
 
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace VinylShopper.Win
             }
 
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var item = SampleDataSource.GetItem((String)navigationParameter);
+            var item = RealDataSource.GetItem((String)navigationParameter);
             this.DefaultViewModel["Group"] = item.Group;
             this.DefaultViewModel["Items"] = item.Group.Items;
             this.flipView.SelectedItem = item;
