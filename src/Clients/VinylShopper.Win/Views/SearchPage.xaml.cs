@@ -51,13 +51,13 @@ namespace VinylShopper.Win.Views
         {
         }
 
-        private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             string searchText = _textBox.Text;
             if (string.IsNullOrWhiteSpace(searchText))
                 return;
 
-            Frame.Navigate(typeof (GroupedItemsPage), searchText);
+            Frame.Navigate(typeof(GroupedItemsPage), searchText);
         }
     }
 }
