@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using VinylShopper.Win.Common;
+using VinylShopper.Win.Data;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
@@ -28,6 +30,15 @@ namespace VinylShopper.Win.Views
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            RealDataSource.Reset();
+            ClearPageCache();
+        }
+
+        private void ClearPageCache()
+        {
+            var cacheSize = Frame.CacheSize;
+            Frame.CacheSize = 0;
+            Frame.CacheSize = cacheSize;
         }
 
         /// <summary>

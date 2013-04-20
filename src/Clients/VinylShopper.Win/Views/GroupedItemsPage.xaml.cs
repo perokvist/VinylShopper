@@ -1,24 +1,16 @@
 ﻿using System.Diagnostics;
 using VinylShopper.Domain.ViewModels;
 using VinylShopper.Win.Data;
-
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
-namespace VinylShopper.Win
+namespace VinylShopper.Win.Views
 {
     /// <summary>
     /// A page that displays a grouped collection of items.
@@ -30,6 +22,8 @@ namespace VinylShopper.Win
         public GroupedItemsPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+
             _vm = new ResultVm();
         }
 
@@ -44,8 +38,8 @@ namespace VinylShopper.Win
         /// session.  This will be null the first time a page is visited.</param>
         protected override async void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
-            // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var sampleDataGroups = SampleDataSource.GetGroups("AllGroups");
+            if (RealDataSource.HasGroups)
+                return;
 
             var searchText = (String) navigationParameter;
             await _vm.Search(searchText);
