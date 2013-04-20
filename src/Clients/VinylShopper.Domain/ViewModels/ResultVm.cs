@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace VinylShopper.Domain.ViewModels
 {
@@ -11,10 +12,9 @@ namespace VinylShopper.Domain.ViewModels
 
         public ObservableCollection<ResultItemVm> SearchResults { get; set; }
 
-        public void Search(string term)
+        public async Task Search(string term)
         {
-            AppContext.Searcher.SearchAsync(term, HandleSearchResult);
-
+            await AppContext.Searcher.SearchAsync(term, HandleSearchResult);
         }
 
         private void HandleSearchResult(ResultItemVm obj)

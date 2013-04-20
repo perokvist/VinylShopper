@@ -1,4 +1,5 @@
-﻿using VinylShopper.Win.Data;
+﻿using VinylShopper.Domain.ViewModels;
+using VinylShopper.Win.Data;
 
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,12 @@ namespace VinylShopper.Win
     /// </summary>
     public sealed partial class GroupedItemsPage : VinylShopper.Win.Common.LayoutAwarePage
     {
+        private ResultVm _vm;
+
         public GroupedItemsPage()
         {
             this.InitializeComponent();
+            _vm = new ResultVm();
         }
 
         /// <summary>
@@ -37,11 +41,34 @@ namespace VinylShopper.Win
         /// </param>
         /// <param name="pageState">A dictionary of state preserved by this page during an earlier
         /// session.  This will be null the first time a page is visited.</param>
-        protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
+        protected override async void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var sampleDataGroups = SampleDataSource.GetGroups((String)navigationParameter);
-            this.DefaultViewModel["Groups"] = sampleDataGroups;
+            var sampleDataGroups = SampleDataSource.GetGroups("AllGroups");
+
+            var searchText = (String) navigationParameter;
+            await _vm.Search(searchText);
+
+            var realDataGroups = CreateDataGroups();
+
+            this.DefaultViewModel["Groups"] = realDataGroups;
+        }
+
+        private IEnumerable<SampleDataGroup> CreateDataGroups()
+        {
+            return _vm.SearchResults.Select(CreateGroup);
+        }
+
+        private SampleDataGroup CreateGroup(ResultItemVm result)
+        {
+            var group = new SampleDataGroup(result.Title,
+                                            result.Title, null, null, null);
+            
+            result.ResultList
+                .Select(x => new SampleDataItem(x.Url, x.Title, x.Label, x.Cover, x.ReleaseDate == null ? string.Empty : x.ReleaseDate.ToString(), x.Artist,group))
+                .ForEach(d => group.Items.Add(d));
+
+            return group;
         }
 
         /// <summary>
@@ -71,6 +98,17 @@ namespace VinylShopper.Win
             // by passing required information as a navigation parameter
             var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
             this.Frame.Navigate(typeof(ItemDetailPage), itemId);
+        }
+    }
+
+    public static class Extensions
+    {
+        public static void ForEach<T>(this IEnumerable<T> list, Action<T> action)
+        {
+            foreach (var t in list)
+            {
+                action(t);
+            }
         }
     }
 }

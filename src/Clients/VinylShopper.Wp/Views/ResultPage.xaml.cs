@@ -15,12 +15,12 @@ namespace VinylShopper.Wp.Views
             DataContext = _vm;
         }
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        protected override async void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             var term = NavigationContext.QueryString["term"];
 
-            _vm.Search(term);
+            await _vm.Search(term);
         }
     }
 }
