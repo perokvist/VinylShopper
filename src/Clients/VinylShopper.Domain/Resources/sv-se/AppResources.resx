@@ -129,6 +129,9 @@
   <data name="BusyTextSearching" xml:space="preserve">
     <value>Söker efter</value>
   </data>
+  <data name="ErrorText" xml:space="preserve">
+    <value>Kunde inte kontakta servern, kontrollera att du har nätverksanslutning och prova igen.</value>
+  </data>
   <data name="Label" xml:space="preserve">
     <value>Skivbolag</value>
   </data>

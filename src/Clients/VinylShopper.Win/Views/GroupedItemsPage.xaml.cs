@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
 using VinylShopper.Domain;
+using VinylShopper.Domain.Resources;
 using VinylShopper.Domain.ViewModels;
 using VinylShopper.Win.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -46,6 +48,12 @@ namespace VinylShopper.Win.Views
             var searchText = (String) navigationParameter;
             await _vm.Search(searchText);
 
+            if (!_vm.SearchResults.Any())
+            {
+                await new MessageDialog(ResourceProxy.GetLocalizedString("ErrorText")).ShowAsync();
+                Frame.GoBack();
+                return;
+            }
             var realDataGroups = CreateDataGroups();
             RealDataSource.SetGroups(realDataGroups);
 

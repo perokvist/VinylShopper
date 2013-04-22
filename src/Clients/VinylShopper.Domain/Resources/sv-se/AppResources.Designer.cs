@@ -97,6 +97,15 @@ namespace VinylShopper.Domain.Resources.sv_se {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kunde inte kontakta servern, kontrollera att du har nätverksanslutning och prova igen..
+        /// </summary>
+        public static string ErrorText {
+            get {
+                return ResourceManager.GetString("ErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Skivbolag.
         /// </summary>
         public static string Label {
