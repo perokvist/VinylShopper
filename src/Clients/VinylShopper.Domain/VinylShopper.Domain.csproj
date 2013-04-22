@@ -57,6 +57,7 @@
     <Compile Include="ViewModels\Json.cs" />
     <Compile Include="ViewModels\MainVm.cs" />
     <Compile Include="ViewModels\MainVmDesign.cs" />
+    <Compile Include="ViewModels\ResultDesign.cs" />
     <Compile Include="ViewModels\ResultItemVm.cs" />
     <Compile Include="ViewModels\ResultVm.cs" />
     <Compile Include="ViewModels\ResultVmDesign.cs" />

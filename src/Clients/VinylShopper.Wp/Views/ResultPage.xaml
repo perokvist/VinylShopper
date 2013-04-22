@@ -17,35 +17,35 @@
     d:DataContext="{d:DesignInstance d:Type=viewModels:ResultVmDesign, IsDesignTimeCreatable=true}"
     >
     <phone:PhoneApplicationPage.Resources>
+    	<DataTemplate x:Key="ItemTemplate" >
+    		<Grid d:DesignWidth="401.522" d:DesignHeight="87.723"
+    			d:DataContext="{d:DesignInstance IsDesignTimeCreatable=true, Type=viewModels:ResultDesign}">
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="Auto"/>
+    				<ColumnDefinition/>
+    				<ColumnDefinition/>
+    			</Grid.ColumnDefinitions>
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="Auto"/>
+    				<RowDefinition Height="Auto"/>
+    				<RowDefinition/>
+    			</Grid.RowDefinitions>
+
+    			<Image Source="{Binding Cover}" Grid.RowSpan="3" Width="100" Height="100"/>
+    			<TextBlock x:Name="Title" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}" Grid.Column="1" Grid.ColumnSpan="2"/>
+    			<TextBlock x:Name="Artist" Text="{Binding Artist}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+    			<TextBlock x:Name="Price" Text="{Binding Price}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"/>
+    			<TextBlock x:Name="Label" Text="{Binding Label}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="2" Grid.Column="1"/>
+    			<TextBlock x:Name="Format" Text="{Binding Format}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,11.787,0" VerticalAlignment="Bottom"/>
+    			<TextBlock x:Name="Pressing" Text="{Binding Pressing}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,11.787,0"/>
+    		</Grid>
+    	</DataTemplate>
+
         <DataTemplate x:Key="PivotItemTemplate">
             <Grid>
                 <ListBox 
                     ItemsSource="{Binding ResultList}"
-                    Grid.Row="1">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate >
-                            <Grid d:DesignWidth="401.522" d:DesignHeight="87.723">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <Image Source="{Binding Cover}" Grid.RowSpan="3" Width="100" Height="100"/>
-                                <TextBlock x:Name="Title" Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}" Grid.Column="1" Grid.ColumnSpan="2"/>
-                                <TextBlock x:Name="Artist" Text="{Binding Artist}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="1" Grid.Column="1"/>
-                                <TextBlock x:Name="Price" Text="{Binding Price}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"/>
-                                <TextBlock x:Name="Label" Text="{Binding Label}" Style="{StaticResource PhoneTextNormalStyle}" Grid.Row="2" Grid.Column="1"/>
-                            </Grid>
-                        </DataTemplate>
-
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                    Grid.Row="1" ItemTemplate="{StaticResource ItemTemplate}"/>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="HeaderTemplate">
