@@ -31,7 +31,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Style="{StaticResource LayoutRootStyle}">
+    <Grid Style="{StaticResource LayoutRootStyle}" Background="{StaticResource AppDarkRed}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
@@ -138,9 +138,9 @@
         			<RowDefinition Height="Auto"/>
         			<RowDefinition Height="Auto"/>
         		</Grid.RowDefinitions>
-        		<ProgressRing HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="40" Height="40" IsActive="{Binding IsBusy}"/>
-        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding BusyText}" VerticalAlignment="Top" Grid.Row="1" Style="{StaticResource SubtitleTextStyle}" Foreground="{StaticResource AppBarItemDisabledForegroundThemeBrush}" Margin="0,0,4,0"/>
-        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding SearchTerm}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Style="{StaticResource SubtitleTextStyle}"/>
+        		<ProgressRing HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="40" Height="40" IsActive="{Binding IsBusy}" Foreground="{StaticResource AppRed}"/>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding BusyText}" VerticalAlignment="Top" Grid.Row="1" Style="{StaticResource SubheaderTextStyle}" Foreground="{StaticResource AppBarItemDisabledForegroundThemeBrush}" Margin="0,0,4,0"/>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding SearchTerm}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Style="{StaticResource SubheaderTextStyle}"/>
         	</Grid>
         </Grid>
 

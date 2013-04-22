@@ -15,9 +15,9 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="VinylShopper.Win.App">
-      <VisualElements DisplayName="Record Shopper" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Search for records to buy!" ForegroundText="light" BackgroundColor="#464646">
+      <VisualElements DisplayName="Record Shopper" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Shoppa vinylskivor" ForegroundText="light" BackgroundColor="#150000">
         <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="Assets\SplashScreen.png" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#150000" />
       </VisualElements>
     </Application>
   </Applications>

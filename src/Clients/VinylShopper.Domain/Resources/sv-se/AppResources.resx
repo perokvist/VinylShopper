@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Album" xml:space="preserve">
+    <value>Album</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>Record Shopper</value>
   </data>
+  <data name="Artist" xml:space="preserve">
+    <value>Artist</value>
+  </data>
   <data name="BusyTextSearching" xml:space="preserve">
     <value>Söker efter</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Skivbolag</value>
   </data>
   <data name="PrivacyPolicyTitle" xml:space="preserve">
     <value>Sekretess</value>
