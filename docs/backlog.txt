@@ -6,7 +6,7 @@ share win
 share wp
 link win
 link wp
-
+privacy policy online
 
 WIP
 
