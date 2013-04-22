@@ -15,7 +15,7 @@ namespace VinylShopper.Domain.ViewModels
             BusyText = text;
         }
 
-        public void ClearBusy(string text)
+        public void ClearBusy()
         {
             IsBusy = false;
             BusyText = null;

@@ -120,6 +120,12 @@
   <data name="AppName" xml:space="preserve">
     <value>Record Shopper</value>
   </data>
+  <data name="BusyTextSearching" xml:space="preserve">
+    <value>Söker efter</value>
+  </data>
+  <data name="PrivacyPolicyTitle" xml:space="preserve">
+    <value>Sekretess</value>
+  </data>
   <data name="SearchButtonText" xml:space="preserve">
     <value>Sök</value>
   </data>

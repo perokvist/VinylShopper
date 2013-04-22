@@ -10,7 +10,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.Resources>
+    <common:LayoutAwarePage.Resources>
+
+    	<common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
         <!--
             Collection of grouped items displayed by this page, bound to a subset
@@ -21,8 +23,8 @@
             Source="{Binding Groups}"
             IsSourceGrouped="true"
             ItemsPath="TopItems"
-            d:Source="{Binding AllGroups, Source={d:DesignInstance Type=data:SampleDataSource, IsDesignTimeCreatable=True}}"/>
-    </Page.Resources>
+            d:Source="{Binding AllGroups, Source={d:DesignInstance IsDesignTimeCreatable=True, Type=data:SampleDataSource}}"/>
+    </common:LayoutAwarePage.Resources>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -126,6 +128,21 @@
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
+        <Grid x:Name="BusyGrid" Grid.Row="1">
+        	<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition Width="Auto"/>
+        			<ColumnDefinition Width="Auto"/>
+        		</Grid.ColumnDefinitions>
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        		</Grid.RowDefinitions>
+        		<ProgressRing HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="40" Height="40" IsActive="{Binding IsBusy}"/>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding BusyText}" VerticalAlignment="Top" Grid.Row="1" Style="{StaticResource SubtitleTextStyle}" Foreground="{StaticResource AppBarItemDisabledForegroundThemeBrush}" Margin="0,0,4,0"/>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding SearchTerm}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Style="{StaticResource SubtitleTextStyle}"/>
+        	</Grid>
+        </Grid>
 
 
         <VisualStateManager.VisualStateGroups>

@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using VinylShopper.Win.Helpers;
 using VinylShopper.Win.Views;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -34,6 +36,11 @@ namespace VinylShopper.Win
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+        }
+
+        void App_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            SettingsHelper.AddSettingsCommands(args);
         }
 
         /// <summary>
@@ -72,6 +79,8 @@ namespace VinylShopper.Win
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
+                SettingsPane.GetForCurrentView().CommandsRequested += App_CommandsRequested;
             }
             if (rootFrame.Content == null)
             {

@@ -70,6 +70,24 @@ namespace VinylShopper.Domain.Resources.sv_se {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Söker efter.
+        /// </summary>
+        public static string BusyTextSearching {
+            get {
+                return ResourceManager.GetString("BusyTextSearching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sekretess.
+        /// </summary>
+        public static string PrivacyPolicyTitle {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sök.
         /// </summary>
         public static string SearchButtonText {

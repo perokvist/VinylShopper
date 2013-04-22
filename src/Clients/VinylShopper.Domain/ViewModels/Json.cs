@@ -19,6 +19,8 @@ namespace VinylShopper.Domain.ViewModels
         public string Url { get; set; }
         public string Format { get; set; }
         public string Pressing { get; set; }
+
+        public Store Store { get; set; }
     }
 
     public class RootObject

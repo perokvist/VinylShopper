@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using VinylShopper.Domain.ViewModels;
 using VinylShopper.Infrastructure;
@@ -27,13 +28,19 @@ namespace VinylShopper.Domain.Search
 
         private ResultItemVm GetResult(RootObject result, string title)
         {
+            if (result == null)
+                return null;
+            var list = result.Result;
+            list.ForEach(r => r.Store = result.Store);
             return new ResultItemVm
                 {
-                    ResultList = result.Result,
+                    ResultList = list,
                     Title = title
                 };
         }
 
     }
+
+    
 
 }

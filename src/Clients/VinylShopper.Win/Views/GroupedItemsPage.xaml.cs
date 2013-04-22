@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using VinylShopper.Domain;
 using VinylShopper.Domain.ViewModels;
 using VinylShopper.Win.Data;
 using System;
@@ -17,7 +18,7 @@ namespace VinylShopper.Win.Views
     /// </summary>
     public sealed partial class GroupedItemsPage : VinylShopper.Win.Common.LayoutAwarePage
     {
-        private ResultVm _vm;
+        private readonly ResultVm _vm;
 
         public GroupedItemsPage()
         {
@@ -25,6 +26,7 @@ namespace VinylShopper.Win.Views
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
             _vm = new ResultVm();
+            DataContext = _vm;
         }
 
         /// <summary>
@@ -47,7 +49,8 @@ namespace VinylShopper.Win.Views
             var realDataGroups = CreateDataGroups();
             RealDataSource.SetGroups(realDataGroups);
 
-            this.DefaultViewModel["Groups"] = realDataGroups;
+            DefaultViewModel["Groups"] = realDataGroups;
+            DataContext = DefaultViewModel;
         }
 
         private IEnumerable<SampleDataGroup> CreateDataGroups()
@@ -67,16 +70,16 @@ namespace VinylShopper.Win.Views
             return group;
         }
 
-        private static SampleDataItem CreateItem(Result x, SampleDataGroup group)
+        private static SampleDataItem CreateItem(Result r, SampleDataGroup group)
         {
             var uniqueId = Guid.NewGuid().ToString();
             Debug.WriteLine(string.Format("generating item with id: {0}", uniqueId));
             return new SampleDataItem(uniqueId, 
-                x.Title, 
-                x.Label, 
-                x.Cover, 
-                x.ReleaseDate == null ? string.Empty : x.ReleaseDate.ToString(), 
-                x.Artist,
+                r.Title, 
+                r.Label, 
+                r.Cover, 
+                r.ReleaseDate == null ? string.Empty : r.ReleaseDate.ToString(), 
+                r.Artist,
                 group);
         }
 
@@ -107,17 +110,6 @@ namespace VinylShopper.Win.Views
             // by passing required information as a navigation parameter
             var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
             this.Frame.Navigate(typeof(ItemDetailPage), itemId);
-        }
-    }
-
-    public static class Extensions
-    {
-        public static void ForEach<T>(this IEnumerable<T> list, Action<T> action)
-        {
-            foreach (var t in list)
-            {
-                action(t);
-            }
         }
     }
 }

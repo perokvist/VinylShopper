@@ -117,6 +117,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataModel\RealDataSource.cs" />
+    <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Views\GroupedItemsPage.xaml.cs">
       <DependentUpon>GroupedItemsPage.xaml</DependentUpon>

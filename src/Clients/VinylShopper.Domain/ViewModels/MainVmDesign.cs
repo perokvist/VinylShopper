@@ -14,7 +14,12 @@ namespace VinylShopper.Domain.ViewModels
                             Format = "format",
                             Label = "label",
                             Price = "12 kr",
-                            Title = "title"
+                            Title = "title",
+                            Store = new Store
+                                {
+                                    StoreName = "HHV",
+                                    StoreLogo = "http://www.hhv.de/assets/logos/hhv-b96bab0e4a7306d9e70ce4426870e3ca.png"
+                                }
                         },
                     new Result()
                         {
@@ -22,7 +27,11 @@ namespace VinylShopper.Domain.ViewModels
                             Format = "format",
                             Label = "label",
                             Price = "12 kr",
-                            Title = "title2"
+                            Title = "title2",
+                            Store = new Store
+                                {
+                                    StoreName = "Virgin"
+                                }
                         },
                     new Result()
                         {
